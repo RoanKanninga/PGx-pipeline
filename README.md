@@ -7,9 +7,11 @@ Farmacogenetics pipeline
 -    add PROJECTNAME in project column (naming scheme is YYYY-MM_batch[1-9] e.g. 2025-09_batch2
 - save samplesheet as {PROJECTNAME}.csv (e.g. 2025-09_batch2.csv)
 2. convert idat to gtc on diagnostic cluster (check if samplesheet contains analysis column instead of pipeline, important for copying rawdata to prm automatically)
-3. copy gtc data to wingedhelix: ```/groups/umcg-pgx/tmp07/rawdata/array/gtc/``` **NB! There can be multiple 'glaasjes'**
+3. copy gtc data to wingedhelix: ```/groups/umcg-pgx/tmp07/rawdata/gtc/``` **NB! There can be multiple 'glaasjes'**
 4. ```module load PGX```
-5. run pgx_pre_process.sh; change PROJECTNAME
+5. copy samplesheet to ```/groups/umcg-pgx/tmp07/Samplesheets/```
+6. dos2unix SAMPLESHEET
+7. run pgx_pre_process.sh; change PROJECTNAME
 
 ```bash ${EBROOTPGX}/pgx_pre_preprocess.sh -p {PROJECTNAME}``
 
