@@ -39,7 +39,12 @@ then
   echo "samplesheet should be here: ${samplesheetFolder}/${projectName}.csv"
 	exit 1
 fi
-
+samplesheet="${samplesheetFolder}/${projectName}.csv"
+cp "${samplesheet}"{,.converted}
+printf '\n'     >> "${samplesheet}.converted"
+sed -i 's/\r/\n/g' "${samplesheet}.converted"
+sed -i "/^[\s,]*$/d" "${samplesheet}.converted"
+mv "${samplesheet}.converted" "${samplesheet}"
 
 mkdir -p "${rawdata}/${projectName}"
 cd "${rawdata}/${projectName}"
