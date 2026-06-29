@@ -61,6 +61,7 @@ samplesheet="${genScripts}/${project}.csv"
 
 mkdir -p "${groupDir}/${tmpDirectory}/projects/${project}/jobs"
 mkdir -p "${groupDir}/${tmpDirectory}/tmp/${project}/"
+mkdir -p "${groupDir}/${tmpDirectory}/logs/${project}"
 
 ### Converting parameters to compute parameters
 echo "tmpName,${tmpDirectory}" > "${genScripts}/tmpdir_parameters.csv"
@@ -80,6 +81,9 @@ bash "${EBROOTMOLGENISMINCOMPUTE}/molgenis_compute.sh" \
 -p "${EBROOTPGX}/chromosome_list.csv" \
 -w "${EBROOTPGX}/workflow_pgx.csv" \
 -rundir "${groupDir}/${tmpDirectory}/projects/${project}/jobs/" \
+--header "${EBROOTPGX}/templates/slurm/header_tnt.ftl" \
+--footer "${EBROOTPGX}/templates/slurm/footer_tnt.ftl" \
+--submit "${EBROOTPGX}/templates/slurm/submit.ftl" \
 -b slurm \
 -runid "run01" \
 --generate \
@@ -97,5 +101,5 @@ perl "${EBROOTPGX}/scripts/RemoveDuplicatesCompute.pl" 'jobs/'*.sh
 rm -f 'jobs/'*bak*
 
 cd -
-
+touch "${groupDir}/${tmpDirectory}/logs/${project}/run01.pipeline.started"
 echo "jobs can be found here: ${groupDir}/${tmpDirectory}/projects/${project}/jobs"

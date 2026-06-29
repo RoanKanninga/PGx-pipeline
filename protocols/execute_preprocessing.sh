@@ -1,4 +1,4 @@
-#MOLGENIS walltime=04:00:00 mem=2gb ppn=1
+#MOLGENIS walltime=08:00:00 mem=40gb ppn=1
 #string gtcDataDir
 #string pgxVersion
 #string samplesheet
