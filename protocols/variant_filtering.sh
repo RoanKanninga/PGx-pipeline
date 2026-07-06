@@ -5,6 +5,9 @@
 #string sampleListPrefix
 #string genotypesOxfordPrefix
 #string variantsPassedQualityControl
+#string project
+#string logsDir
+#string intermediateDir
 
 
 set -e

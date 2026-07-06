@@ -14,6 +14,8 @@
 #string imputationOutputDir
 #string intermediateDir
 #string cnvOutDir
+#string project
+#string logsDir
 
 set -e
 set -u

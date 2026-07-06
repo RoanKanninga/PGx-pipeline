@@ -7,6 +7,9 @@
 #string concatenatedGenotypesOutputDir
 #string plinkVersion
 #string intermediateDir
+#string project
+#string logsDir
+#string intermediateDir
 
 set -e
 set -u

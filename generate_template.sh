@@ -51,16 +51,16 @@ do
 	esac
 done
 
-if [[ -z "${tmpDirectory:-}" ]]; then tmpDirectory=$(basename $(cd ../../ && pwd )) ; fi ; echo "tmpDirectory=${tmpDirectory}"
-if [[ -z "${group:-}" ]]; then group=$(basename $(cd ../../../ && pwd )) ; fi ; echo "group=${group}"
+if [[ -z "${tmpDirectory:-}" ]]; then tmpDirectory=$(basename $(cd ../../../ && pwd )) ; fi ; echo "tmpDirectory=${tmpDirectory}"
+if [[ -z "${group:-}" ]]; then group=$(basename $(cd ../../../../ && pwd )) ; fi ; echo "group=${group}"
 if [[ -z "${groupDir:-}" ]]; then groupDir="/groups/${group}/" ; fi ; echo "groupDir=${groupDir}"
 if [[ -z "${project:-}" ]]; then project=$(basename $(pwd )) ; fi ; echo "project=${project}"
 
-genScripts="${groupDir}/${tmpDirectory}/generatedscripts/${project}/"
+genScripts="${groupDir}/${tmpDirectory}/generatedscripts/PGx/${project}/"
 samplesheet="${genScripts}/${project}.csv"
 
-mkdir -p "${groupDir}/${tmpDirectory}/projects/${project}/jobs"
-mkdir -p "${groupDir}/${tmpDirectory}/tmp/${project}/"
+mkdir -p "${groupDir}/${tmpDirectory}/projects/PGx/${project}/jobs"
+mkdir -p "${groupDir}/${tmpDirectory}/tmp/PGx/${project}/"
 mkdir -p "${groupDir}/${tmpDirectory}/logs/${project}"
 
 ### Converting parameters to compute parameters
@@ -80,7 +80,7 @@ bash "${EBROOTMOLGENISMINCOMPUTE}/molgenis_compute.sh" \
 -p "${genScripts}/${project}.csv" \
 -p "${EBROOTPGX}/chromosome_list.csv" \
 -w "${EBROOTPGX}/workflow_pgx.csv" \
--rundir "${groupDir}/${tmpDirectory}/projects/${project}/jobs/" \
+-rundir "${groupDir}/${tmpDirectory}/projects/PGx/${project}/jobs/" \
 --header "${EBROOTPGX}/templates/slurm/header_tnt.ftl" \
 --footer "${EBROOTPGX}/templates/slurm/footer_tnt.ftl" \
 --submit "${EBROOTPGX}/templates/slurm/submit.ftl" \
@@ -94,7 +94,7 @@ groupDir=${groupDir}" \
 -g \
 -weave
 
-cd "${groupDir}/${tmpDirectory}/projects/${project}/"
+cd "${groupDir}/${tmpDirectory}/projects/PGx/${project}/"
 ## additional removing duplicate values in scripts 
 ml Perl
 perl "${EBROOTPGX}/scripts/RemoveDuplicatesCompute.pl" 'jobs/'*.sh
@@ -102,4 +102,4 @@ rm -f 'jobs/'*bak*
 
 cd -
 touch "${groupDir}/${tmpDirectory}/logs/${project}/run01.pipeline.started"
-echo "jobs can be found here: ${groupDir}/${tmpDirectory}/projects/${project}/jobs"
+echo "jobs can be found here: ${groupDir}/${tmpDirectory}/projects/PGx/${project}/jobs"

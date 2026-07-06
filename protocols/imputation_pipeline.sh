@@ -13,6 +13,8 @@
 #string outputName
 #string imputationOutputDir
 #string intermediateDir
+#string project
+#string logsDir
 
 set -e
 set -u

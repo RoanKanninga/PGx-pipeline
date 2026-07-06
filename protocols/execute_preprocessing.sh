@@ -5,6 +5,9 @@
 #string ngsUtilsVersion
 #string gapVersion
 #string intermediateDir
+#string project
+#string logsDir
+#string intermediateDir
 set -eu
 
 module load "${gapVersion}"

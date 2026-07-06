@@ -37,6 +37,7 @@ imputationFlankSize,1000000
 cnvBatchCorrectionPath,${pgxDataDir}/analyses/cyp2d6_cnv_calling/20240730/out
 tmpDataDir,${groupDir}/${tmpName}/
 projectDir,${tmpDataDir}/projects/PGx/${project}/
+logsDir,${tmpDataDir}/logs/${project}/
 projectJobsDir,${projectDir}/jobs/
 intermediateDir,${tmpDataDir}/tmp/PGx/${project}/
 rawdataPath,${tmpDataDir}/rawdata/

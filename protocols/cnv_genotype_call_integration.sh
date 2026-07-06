@@ -4,6 +4,9 @@
 #string concatenatedGenotypesOutputDir
 #string cnvBedFile
 #string plinkVersion
+#string project
+#string logsDir
+#string intermediateDir
 
 set -e
 set -u

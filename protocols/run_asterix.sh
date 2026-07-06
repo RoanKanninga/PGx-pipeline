@@ -14,6 +14,9 @@
 #string translationTableHaploToCiDir
 #string asterixDefaultJson
 #string gtcDataDir
+#string project
+#string logsDir
+#string intermediateDir
 
 set -e
 set -u

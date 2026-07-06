@@ -10,6 +10,8 @@
 #string tmpDataDir
 #string projectDir
 #string project
+#string logsDir
+#string intermediateDir
 
 set -e
 set -u

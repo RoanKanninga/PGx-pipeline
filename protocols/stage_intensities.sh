@@ -11,6 +11,9 @@
 #string correctiveVariantsOutputDir
 #string SentrixBarcode_A
 #string asterixVersion
+#string project
+#string logsDir
+#string intermediateDir
 
 set -e
 set -u
