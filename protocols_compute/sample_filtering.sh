@@ -4,6 +4,7 @@
 #string plink2Version
 #string rVersion
 
+#string samplesheet
 #string sampleListPrefix
 #string concatenatedGenotypesOutputDir
 
@@ -24,7 +25,8 @@ plink2 --bfile "${concatenatedGenotypesOutputDir}/plink_dataset_to_qc" --out "${
 Rscript "${EBROOTPGX}/scripts/qc_autosomes.R" \
 --sample-missingness "${sampleListPrefixFolder}/plink2_sample_qc.smiss" \
 --heterozygosity "${sampleListPrefixFolder}/plink2_sample_qc.het" \
---out-prefix "${sampleListPrefixFolder}/qc_out"
+--out-prefix "${sampleListPrefixFolder}/qc_out" \
+--samplesheet "${samplesheet}"
 
 plink2 --bfile "${concatenatedGenotypesOutputDir}/plink_dataset_to_qc" --keep "${sampleListPrefixFolder}/qc_out.samples_passed_qc.txt" \
 --make-bed --out "${concatenatedGenotypesOutputDir}/chr_all"
