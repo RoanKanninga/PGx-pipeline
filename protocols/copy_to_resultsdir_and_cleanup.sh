@@ -12,6 +12,7 @@
 #string project
 #string logsDir
 #string intermediateDir
+#string samplesheet
 
 set -e
 set -u
@@ -23,6 +24,7 @@ chmod 755 -R ${imputationOutputDir}/*
 rsync -rv "${cnvDir%/}" "${resultsDir}"
 rsync -rv "${imputationOutputDir%/}" "${resultsDir}"
 rsync -rv "${qualControlledDir%/}" "${resultsDir}"
+rsync -v "${samplesheet}" "${resultsDir}"
 
 mkdir -p "${resultsDir}/vcf/"
 
@@ -31,6 +33,7 @@ do
 	rsync -v "${i}"* "${resultsDir}/vcf"
 done
 
+chmod 755 -R "${resultsDir}"
 #
 ## Split research samples from FGP samples  
 #
