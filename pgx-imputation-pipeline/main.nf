@@ -228,12 +228,13 @@ process vcf_fixref_hg38{
 
     script:
     """
-    bcftools sort ${input_vcf} --output-type z -o ${input_vcf}.gz
+    mkdir tmp
+    bcftools sort ${input_vcf} --output-type z -o ${input_vcf}.gz -T tmp/
     bcftools index ${input_vcf}.gz
 
     bcftools +fixref ${input_vcf}.gz -- -f ${fasta} -i ${vcf_file} | \
     bcftools norm --check-ref x -f ${fasta} | \
-    bcftools sort -Oz -o fixref_hg38.vcf.gz
+    bcftools sort -Oz -o fixref_hg38.vcf.gz -T tmp/
     """
 }
 
@@ -249,8 +250,9 @@ process filter_preimpute_vcf{
 
     script:
     """
+		mkdir tmp
     #Index
-    bcftools sort ${input_vcf} --output-type z -o ${input_vcf}.gz
+    bcftools sort ${input_vcf} --output-type z -o ${input_vcf}.gz -T tmp/
     bcftools index ${input_vcf}.gz
 
     #Add tags
@@ -260,7 +262,7 @@ process filter_preimpute_vcf{
     bcftools filter -i 'INFO/HWE > 1e-6 & F_MISSING < 0.05' tagged.vcf.gz |\
      bcftools norm -d all |\
      bcftools norm -m+any |\
-     bcftools view -m2 -M2 -Oz -o filtered.vcf.gz
+     bcftools view -m2 -M2 -Oz -o filtered.vcf.gz 
 
      #Index the output file
      bcftools index filtered.vcf.gz

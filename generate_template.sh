@@ -93,7 +93,7 @@ groupDir=${groupDir}" \
 
 cd "${groupDir}/${tmpDirectory}/projects/PGx/${project}/run01/"
 ## additional removing duplicate values in scripts 
-module load "${PERL_VERISON}"
+module load "${PERL_VERSION}"
 perl "${EBROOTPGX}/scripts/RemoveDuplicatesCompute.pl" 'jobs/'*.sh
 rm -f 'jobs/'*bak*
 

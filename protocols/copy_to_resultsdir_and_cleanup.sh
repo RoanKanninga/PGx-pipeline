@@ -79,7 +79,8 @@ count=0
 # done
 
 chmod g+w "${projectDir}"
-#rsync -rv "${projectDir%/}" "tunnel+nibbler:/groups/umcg-pgx/tmp02/projects/"
+projectFolder=$(dirname ${projectDir%/})
+rsync -rv "${projectFolder%/}" "tunnel+nibbler:/groups/umcg-pgx/tmp02/projects/"
 
 echo "creating ${tmpDataDir}/logs/${project}/run01.pipeline.finished"
 rm -f "${tmpDataDir}/logs/${project}/run01.pipeline.started"
